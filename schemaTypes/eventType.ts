@@ -12,10 +12,12 @@ export const eventType = defineType({
     defineField({
       name: 'name',
       type: 'string',
+      group: 'details',
     }),
     defineField({
       name: 'slug',
       type: 'slug',
+      group: 'details',
       options: { source: 'name'},
       validation: (rule) => rule
       .required()
@@ -25,6 +27,7 @@ export const eventType = defineType({
     defineField({
       name: 'eventType',
       type: 'string',
+      group: 'details',
       options: {
         list: ['in-person', 'virtual'],
         layout: 'radio',
@@ -33,16 +36,19 @@ export const eventType = defineType({
     defineField({
       name: 'date',
       type: 'datetime',
+      group: 'details',
     }),
     defineField({
       name: 'doorsOpen',
       description: 'Number of minutes before the start time for admission',
       type: 'number',
       initialValue: 60,
+      group: 'details',
     }),
     defineField({
       name: 'venue',
       type: 'reference',
+      group: 'details',
       to: [{type: 'venue'}],
       readOnly: ({value, document}) => !value && document?.eventType === 'virtual',
       validation: (rule) => 
@@ -56,20 +62,24 @@ export const eventType = defineType({
     defineField({
       name: 'headline',
       type: 'reference',
+      group: 'details',
       to: [{type: 'artist'}],
     }),
     defineField({
       name: 'image',
       type: 'image',
+      group: 'editorial',
     }),
     defineField({
       name: 'details',
       type: 'array',
+      group: 'editorial',
       of: [{type: 'block'}],
     }),
     defineField({
       name: 'tickets',
       type: 'url',
+      group: 'details',
     }),
   ],
 })
